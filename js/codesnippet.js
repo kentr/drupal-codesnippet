@@ -1,6 +1,6 @@
 (function ($, Drupal) {
   Drupal.behaviors.codesnippet = {
-    attach: function (context, settings) {
+    attach: function () {
       $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
     }
   }
