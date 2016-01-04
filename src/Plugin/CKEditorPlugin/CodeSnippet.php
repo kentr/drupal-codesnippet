@@ -12,6 +12,7 @@ use Drupal\ckeditor\CKEditorPluginConfigurableInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\editor\Entity\Editor;
 use Drupal\Core\Url;
+use Drupal\Component\Serialization\Json;
 
 /**
  * Defines the "codesnippet" plugin.
@@ -36,8 +37,23 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
   public function getConfig(Editor $editor) {
     $settings = $editor->getSettings();
 
+    $default_config = \Drupal::config('codesnippet.settings');
+
+    if (!empty($settings['plugins']['codesnippet']['highlight_style'])) {
+      $style = $settings['plugins']['codesnippet']['highlight_style'];
+    } else {
+      $style = $default_config->get('style');
+    }
+
+    if (!empty($settings['plugins']['codesnippet']['highlight_languages'])) {
+      $languages = array_filter($settings['plugins']['codesnippet']['highlight_languages']);
+    } else {
+      $languages = $default_config->get('languages');
+    }
+
     return array(
-      'codeSnippet_theme' => !empty($settings['plugins']['codesnippet']['highlight_style']) ? $settings['plugins']['codesnippet']['highlight_style'] : 'default',
+      'codeSnippet_theme' => $style,
+      'codeSnippet_languages' => $languages,
     );
   }
 
@@ -60,6 +76,11 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
     $settings = $editor->getSettings();
     $styles = $this->getStyles();
 
+    $config = \Drupal::config('codesnippet.settings');
+
+    $default_style = $config->get('style');
+    $languages = $config->get('languages');
+
     $form['#attached']['library'][] = 'codesnippet/codesnippet.admin';
 
     $form['highlight_style'] = array(
@@ -67,7 +88,15 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
       '#title' => 'highlight.js Style',
       '#description' => $this->t('Select a style to apply to all highlighted code snippets. You can preview the styles at @link.', array('@link' => \Drupal::l('https://highlightjs.org/static/demo', Url::fromUri('https://highlightjs.org/static/demo/')))),
       '#options' => $styles,
-      '#default_value' => !empty($settings['plugins']['codesnippet']['highlight_style']) ? $settings['plugins']['codesnippet']['highlight_style'] : 'arta',
+      '#default_value' => !empty($settings['plugins']['codesnippet']['highlight_style']) ? $settings['plugins']['codesnippet']['highlight_style'] : $default_style,
+    );
+
+    $form['highlight_languages'] = array(
+      '#type' => 'checkboxes',
+      '#title' => 'Supported Languages',
+      '#options' => $languages,
+      '#description' => t('Enter languages you want to have as options in the editor dialog.'),
+      '#default_value' => $settings['plugins']['codesnippet']['highlight_languages'],
     );
 
     return $form;
