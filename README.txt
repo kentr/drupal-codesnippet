@@ -23,7 +23,7 @@ codeblock of what you want, and check the class on the code HTML element.
 Additionally, you will need to add any new languages to HighlightJS by customizing its build. You can customize the build at https://highlightjs.org/download/
 
 1. Select all the languages you want to support with syntax highlighting and download it.
-2. Overwrite ckeditor/plugins/codesnippet/highlightjs/lib/highlight/highlight.pack.js with this new file.
+2. Overwrite codesnippet/js/plugins/codesnippet/lib/highlight/highlight.pack.js with this new file.
 3. Clear Drupal caches.
 
 Note that code previews syntax highlighting may not look 100% right, but typically will when viewed on the frontend.
