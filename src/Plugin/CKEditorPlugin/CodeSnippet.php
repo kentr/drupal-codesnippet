@@ -12,7 +12,6 @@ use Drupal\ckeditor\CKEditorPluginConfigurableInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\editor\Entity\Editor;
 use Drupal\Core\Url;
-use Drupal\Component\Serialization\Json;
 
 /**
  * Defines the "codesnippet" plugin.
@@ -51,6 +50,10 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
       $languages = $default_config->get('languages');
     }
 
+    // before sending along to CKEditor, alpha sort and capitalize the language
+    $languages = array_map(function ($language) { return ucwords($language); }, $languages);
+    asort($languages);
+
     return array(
       'codeSnippet_theme' => $style,
       'codeSnippet_languages' => $languages,
@@ -80,6 +83,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
 
     $default_style = $config->get('style');
     $languages = $config->get('languages');
+    asort($languages);
 
     $form['#attached']['library'][] = 'codesnippet/codesnippet.admin';
 
@@ -95,7 +99,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
       '#type' => 'checkboxes',
       '#title' => 'Supported Languages',
       '#options' => $languages,
-      '#description' => t('Enter languages you want to have as options in the editor dialog.'),
+      '#description' => t('Enter languages you want to have as options in the editor dialog. To add a language not in this list, please see the README.txt of this module.'),
       '#default_value' => $settings['plugins']['codesnippet']['highlight_languages'],
     );
 
