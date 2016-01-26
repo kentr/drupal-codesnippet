@@ -27,7 +27,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
    * {@inheritdoc}
    */
   public function getFile() {
-    return drupal_get_path('module', 'codesnippet') . '/js/plugins/codesnippet/plugin.js';
+    return '/libraries/codesnippet/plugin.js';
   }
 
   /**
@@ -67,7 +67,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
     return array(
       'CodeSnippet' => array(
         'label' => t('CodeSnippet'),
-        'image' => drupal_get_path('module', 'codesnippet') . '/js/plugins/codesnippet/icons/codesnippet.png',
+        'image' => '/libraries/codesnippet/icons/codesnippet.png',
       ),
     );
   }
@@ -110,7 +110,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
    * Returns available stylesheets to use for code syntax highlighting.
    */
   private function getStyles() {
-    $styles = preg_grep('/\.css/', scandir(drupal_get_path('module', 'codesnippet') . '/js/plugins/codesnippet/lib/highlight/styles'));
+    $styles = preg_grep('/\.css/', scandir('/libraries/codesnippet/lib/highlight/styles'));
     $style_options = array();
 
     foreach ($styles as $stylesheet) {
