@@ -3,7 +3,12 @@ CodeSnippet
 Installation
 ============
 
-This module requires the core CKEditor module.
+This module requires the core CKEditor module and also the CodeSnippet plugin from CKEditor.com.
+
+1. Download the plugin from http://ckeditor.com/addon/codesnippet at least version 4.5.6.
+2. Place the plugin in the root libraries folder (/libraries).
+3. Enable CodeSnippet in the Drupal admin.
+4. Configure your WYSIWYG toolbar to include the button.
 
 Supported Languages
 ===================
@@ -23,10 +28,10 @@ codeblock of what you want, and check the class on the code HTML element.
 Additionally, you will need to add any new languages to HighlightJS by customizing its build. You can customize the build at https://highlightjs.org/download/
 
 1. Select all the languages you want to support with syntax highlighting and download it.
-2. Overwrite codesnippet/js/plugins/codesnippet/lib/highlight/highlight.pack.js with this new file.
+2. Overwrite /libraries/codesnippet/lib/highlight/highlight.pack.js with this new file.
 3. Clear Drupal caches.
 
-Note that code previews syntax highlighting may not look 100% right, but typically will when viewed on the frontend.
+Note that code previews syntax highlighting may not look 100% right (in the WYSIWYG), but typically will when viewed on the frontend.
 
 Out of the box, the included version of highlightjs comes with these languages (as defined in config/install/codesnippet.settings.yml):
 
@@ -62,6 +67,3 @@ languages:
   typescript: 'TypeScript'
   yaml: 'Yaml'
   xml: 'HTML/XML'
-
-In a future release, it is entirely possible that the method of obtaining the plugin and highlightjs will simply include everything or at least be more flexible - but for now, nearly all common languages within Drupal/PHP development are
-supported for syntax highlighting.
