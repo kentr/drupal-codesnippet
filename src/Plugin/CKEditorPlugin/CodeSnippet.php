@@ -110,7 +110,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
    * Returns available stylesheets to use for code syntax highlighting.
    */
   private function getStyles() {
-    $styles = preg_grep('/\.css/', scandir('/libraries/codesnippet/lib/highlight/styles'));
+    $styles = preg_grep('/\.css/', scandir(DRUPAL_ROOT . '/libraries/codesnippet/lib/highlight/styles'));
     $style_options = array();
 
     foreach ($styles as $stylesheet) {
