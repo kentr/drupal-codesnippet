@@ -100,7 +100,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
       '#title' => 'Supported Languages',
       '#options' => $languages,
       '#description' => t('Enter languages you want to have as options in the editor dialog. To add a language not in this list, please see the README.txt of this module.'),
-      '#default_value' => $settings['plugins']['codesnippet']['highlight_languages'],
+      '#default_value' => !empty($settings['plugins']['codesnippet']['highlight_languages']) ? $settings['plugins']['codesnippet']['highlight_languages'] : $languages,
     );
 
     return $form;
