@@ -27,7 +27,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
    * {@inheritdoc}
    */
   public function getFile() {
-    return '/libraries/codesnippet/plugin.js';
+    return base_path() . 'libraries/codesnippet/plugin.js';
   }
 
   /**
@@ -67,7 +67,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
     return array(
       'CodeSnippet' => array(
         'label' => t('CodeSnippet'),
-        'image' => '/libraries/codesnippet/icons/codesnippet.png',
+        'image' => base_path() . 'libraries/codesnippet/icons/codesnippet.png',
       ),
     );
   }
