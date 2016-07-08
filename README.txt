@@ -51,7 +51,7 @@ Out of the box, the included version of highlightjs comes with these languages (
 languages:
   apache: 'Apache'
   bash: 'Bash'
-  coffescript: 'CoffeeScript'
+  coffeescript: 'CoffeeScript'
   css: 'CSS'
   dart: 'Dart'
   dockerfile: 'Dockerfile'
@@ -79,4 +79,6 @@ languages:
   twig: 'Twig'
   typescript: 'TypeScript'
   yaml: 'Yaml'
-  xml: 'HTML/XML'
+  xml: 'XML'
+
+Note that if you want to highlight HTML code snippets, you need to use the XML option. It works for both.
