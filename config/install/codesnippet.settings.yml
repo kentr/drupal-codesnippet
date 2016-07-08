@@ -30,4 +30,4 @@ languages:
   twig: 'Twig'
   typescript: 'TypeScript'
   yaml: 'Yaml'
-  xml: 'HTML/XML'
+  xml: 'XML'
