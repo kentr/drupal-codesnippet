@@ -19,6 +19,9 @@ Drag CodeSnippet icon into the active toolbar, and the config form will appear b
 supported languages option. By default, all are checked for you. Uncheck ones you won't need, it's optional. This only controls
 the options in the dialog window of CKEditor when inserting a code snippet.
 
+Note that your filter format must support the use of pre and code tags under allowed tags as well, if using anything other
+than Full HTML.
+
 Supported Languages
 ===================
 
