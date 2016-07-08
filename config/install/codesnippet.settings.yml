@@ -2,7 +2,7 @@ style: 'github'
 languages:
   apache: 'Apache'
   bash: 'Bash'
-  coffescript: 'CoffeeScript'
+  coffeescript: 'CoffeeScript'
   css: 'CSS'
   dart: 'Dart'
   dockerfile: 'Dockerfile'
