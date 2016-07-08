@@ -10,6 +10,15 @@ This module requires the core CKEditor module and also the CodeSnippet plugin fr
 3. Enable CodeSnippet in the Drupal admin.
 4. Configure your WYSIWYG toolbar to include the button.
 
+Basic Usage
+===========
+
+After completing the installation steps above, go to the filter format you want to configure (must be using CKEditor).
+
+Drag CodeSnippet icon into the active toolbar, and the config form will appear below with a syntax highlighting style and
+supported languages option. By default, all are checked for you. Uncheck ones you won't need, it's optional. This only controls
+the options in the dialog window of CKEditor when inserting a code snippet.
+
 Supported Languages
 ===================
 
