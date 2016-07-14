@@ -3,27 +3,39 @@ CodeSnippet
 Installation
 ============
 
-This module requires the core CKEditor module and also the CodeSnippet plugin from CKEditor.com.
+This module requires the core CKEditor module and either the CodeSnippet or CodeTag plugins from CKEditor.com.
 
-1. Download the plugin from http://ckeditor.com/addon/codesnippet at least version 4.5.6.
-2. Place the plugin in the root libraries folder (/libraries).
+1. Download the desired CKEditor plugins (at least version 4.5.6) from:
+  * http://ckeditor.com/addon/codesnippet
+  * http://ckeditor.com/addon/codeTag
+2. Place each plugin folder in the root libraries folder (/libraries).
 3. Enable CodeSnippet in the Drupal admin.
-4. Configure your WYSIWYG toolbar to include the button.
+4. Configure your WYSIWYG toolbar to include the buttons.
 
 Basic Usage
 ===========
 
 After completing the installation steps above, go to the filter format you want to configure (must be using CKEditor).
 
-Drag CodeSnippet icon into the active toolbar, and the config form will appear below with a syntax highlighting style and
+CodeSnippet:
+
+Drag the CodeSnippet icon into the active toolbar, and the config form will appear below with a syntax highlighting style and
 supported languages option. By default, all are checked for you. Uncheck ones you won't need, it's optional. This only controls
 the options in the dialog window of CKEditor when inserting a code snippet.
 
 Note that your filter format must support the use of pre and code tags under allowed tags as well, if using anything other
 than Full HTML.
 
-Supported Languages
-===================
+CodeTag:
+
+Drag the CodeTag button into the active toolbar.  There is no configuration; the button should appear in your editor after you
+save the changes.
+
+Note that your filter format must support the use of the code tag under allowed tags as well, if using anything other
+than Full HTML.
+
+CodeSnippet Supported Languages
+===============================
 
 To add new options to the supported languages option in the admin form, you can use a form alter hook within your own custom module to add on:
 
