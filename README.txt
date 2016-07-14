@@ -3,11 +3,10 @@ CodeSnippet
 Installation
 ============
 
-This module requires the core CKEditor module and either the CodeSnippet or CodeTag plugins from CKEditor.com.
+This module requires the core CKEditor module and the CodeSnippet plugin from CKEditor.com.
 
 1. Download the desired CKEditor plugins (at least version 4.5.6) from:
   * http://ckeditor.com/addon/codesnippet
-  * http://ckeditor.com/addon/codeTag
 2. Place each plugin folder in the root libraries folder (/libraries).
 3. Enable CodeSnippet in the Drupal admin.
 4. Configure your WYSIWYG toolbar to include the buttons.
@@ -24,14 +23,6 @@ supported languages option. By default, all are checked for you. Uncheck ones yo
 the options in the dialog window of CKEditor when inserting a code snippet.
 
 Note that your filter format must support the use of pre and code tags under allowed tags as well, if using anything other
-than Full HTML.
-
-CodeTag:
-
-Drag the CodeTag button into the active toolbar.  There is no configuration; the button should appear in your editor after you
-save the changes.
-
-Note that your filter format must support the use of the code tag under allowed tags as well, if using anything other
 than Full HTML.
 
 CodeSnippet Supported Languages
