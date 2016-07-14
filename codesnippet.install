@@ -9,9 +9,10 @@ function codesnippet_requirements($phase) {
   $requirements = [];
 
   if ($phase == 'install' || $phase == 'runtime') {
-    $plugin_detected = file_exists(DRUPAL_ROOT . '/libraries/codesnippet/plugin.js');
+    $codesnippet_detected = file_exists(DRUPAL_ROOT . '/libraries/codesnippet/plugin.js');
+    $codetag_detected = file_exists(DRUPAL_ROOT . '/libraries/codeTag/plugin.js');
 
-    if ($plugin_detected) {
+    if ($codesnippet_detected) {
       $requirements['codesnippet'] = [
         'title' => t('CodeSnippet'),
         'value' => t('Plugin detected'),
@@ -23,6 +24,21 @@ function codesnippet_requirements($phase) {
         'value' => t('Plugin not detected'),
         'severity' => REQUIREMENT_ERROR,
         'description' => t('Before you can use the CKEditor CodeSnippet module, you need to download the codesnippet plugin from ckeditor.com and place it in /libraries/codesnippet. Check the README.txt for more information. <a href=":plugin_url">Get the plugin here</a>.', [':plugin_url' => 'http://ckeditor.com/addon/codesnippet']),
+      ];
+    }
+
+    if ($codetag_detected) {
+      $requirements['codetag'] = [
+        'title' => t('CodeTag'),
+        'value' => t('Plugin detected'),
+        'severity' => REQUIREMENT_OK,
+      ];
+    } else {
+      $requirements['codetag'] = [
+        'title' => t('CodeTag'),
+        'value' => t('Plugin not detected'),
+        'severity' => REQUIREMENT_WARNING,
+        'description' => t('If you want support for basic inline code blocks, you will need the CodeTag plugin for CKEditor. <a href=":plugin_url">Get the plugin here</a>.', [':plugin_url' => 'http://ckeditor.com/addon/codeTag']),
       ];
     }
   }
