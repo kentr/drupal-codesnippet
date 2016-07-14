@@ -5,9 +5,8 @@ Installation
 
 This module requires the core CKEditor module and the CodeSnippet plugin from CKEditor.com.
 
-1. Download the desired CKEditor plugins (at least version 4.5.6) from:
-  * http://ckeditor.com/addon/codesnippet
-2. Place each plugin folder in the root libraries folder (/libraries).
+1. Download the CodeSnippet plugin (at least version 4.5.6) from http://ckeditor.com/addon/codesnippet
+2. Place the plugin folder in the root libraries folder (/libraries/codesnippet).
 3. Enable CodeSnippet in the Drupal admin.
 4. Configure your WYSIWYG toolbar to include the buttons.
 
