@@ -50,7 +50,6 @@ function codesnippet_preprocess_html(&$variables) {
 
     if (!empty($settings['plugins']['codesnippet']['highlight_style'])) {
       $variables['#attached']['library'][] = 'codesnippet/codesnippet.style.' . $settings['plugins']['codesnippet']['highlight_style'];
-      break;
     }
   }
 }
