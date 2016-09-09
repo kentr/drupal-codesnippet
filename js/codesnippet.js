@@ -7,10 +7,8 @@
   'use strict';
 
   Drupal.behaviors.codesnippet = {
-    attach: function () {
-      $('pre code').each(function (i, e) {
-        hljs.highlightBlock(e);
-      });
+    attach: function (context, settings) {
+      hljs.initHighlightingOnLoad();
     }
   };
 
