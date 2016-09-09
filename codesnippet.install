@@ -1,9 +1,12 @@
 <?php
 
 /**
+ * @file
+ * Check requirements for the CKEditor CodeSnippet module.
+ */
+
+/**
  * Implements hook_requirements().
- * @param $phase
- * @return array
  */
 function codesnippet_requirements($phase) {
   $requirements = [];
@@ -17,7 +20,8 @@ function codesnippet_requirements($phase) {
         'value' => t('Plugin detected'),
         'severity' => REQUIREMENT_OK,
       ];
-    } else {
+    }
+    else {
       $requirements['codesnippet'] = [
         'title' => t('CodeSnippet'),
         'value' => t('Plugin not detected'),

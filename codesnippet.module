@@ -9,9 +9,11 @@ use Drupal\editor\Entity\Editor;
 
 /**
  * Implements hook_ckeditor_css_alter().
+ *
  * Injects our selected CSS sheet anytime CKEditor has loaded.
- * @param $css
- * @param Editor $editor
+ *
+ * @param array $css
+ * @param Drupal\editor\Entity\Editor $editor
  */
 function codesnippet_ckeditor_css_alter(array &$css, Editor $editor) {
   if (!$editor->hasAssociatedFilterFormat()) {
@@ -27,8 +29,10 @@ function codesnippet_ckeditor_css_alter(array &$css, Editor $editor) {
 
 /**
  * Implements hook_preprocess_html().
+ *
  * Ensure our necessary scripts are loaded to the page.
- * @param $variables
+ *
+ * @param array $variables
  */
 function codesnippet_preprocess_html(&$variables) {
   $variables['#attached']['library'][] = 'codesnippet/codesnippet.highlightjs';

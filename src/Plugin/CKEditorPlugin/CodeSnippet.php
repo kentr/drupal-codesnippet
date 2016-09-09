@@ -1,16 +1,12 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\codesnippet\Plugin\CKEditorPlugin\CodeSnippet.
- */
-
 namespace Drupal\codesnippet\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginBase;
 use Drupal\ckeditor\CKEditorPluginConfigurableInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\editor\Entity\Editor;
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 
 /**
@@ -23,6 +19,7 @@ use Drupal\Core\Url;
  * )
  */
 class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurableInterface {
+
   /**
    * {@inheritdoc}
    */
@@ -40,36 +37,41 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
 
     if (!empty($settings['plugins']['codesnippet']['highlight_style'])) {
       $style = $settings['plugins']['codesnippet']['highlight_style'];
-    } else {
+    }
+    else {
       $style = $default_config->get('style');
     }
 
     if (!empty($settings['plugins']['codesnippet']['highlight_languages'])) {
       $languages = array_filter($settings['plugins']['codesnippet']['highlight_languages']);
-    } else {
+    }
+    else {
       $languages = $default_config->get('languages');
     }
 
-    // before sending along to CKEditor, alpha sort and capitalize the language
-    $languages = array_map(function ($language) { return ucwords($language); }, $languages);
+    // Before sending along to CKEditor, alpha sort and capitalize the language.
+    $languages = array_map(function ($language) {
+      return ucwords($language);
+    }, $languages);
+
     asort($languages);
 
-    return array(
+    return [
       'codeSnippet_theme' => $style,
       'codeSnippet_languages' => $languages,
-    );
+    ];
   }
 
   /**
    * {@inheritdoc}
    */
   public function getButtons() {
-    return array(
-      'CodeSnippet' => array(
-        'label' => t('CodeSnippet'),
+    return [
+      'CodeSnippet' => [
+        'label' => $this->t('CodeSnippet'),
         'image' => base_path() . 'libraries/codesnippet/icons/codesnippet.png',
-      ),
-    );
+      ],
+    ];
   }
 
   /**
@@ -87,21 +89,21 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
 
     $form['#attached']['library'][] = 'codesnippet/codesnippet.admin';
 
-    $form['highlight_style'] = array(
+    $form['highlight_style'] = [
       '#type' => 'select',
       '#title' => 'highlight.js Style',
-      '#description' => $this->t('Select a style to apply to all highlighted code snippets. You can preview the styles at @link.', array('@link' => \Drupal::l('https://highlightjs.org/static/demo', Url::fromUri('https://highlightjs.org/static/demo/')))),
+      '#description' => $this->t('Select a style to apply to all highlighted code snippets. You can preview the styles at @link.', ['@link' => Link::fromTextAndUrl('https://highlightjs.org/static/demo', Url::fromUri('https://highlightjs.org/static/demo/'))]),
       '#options' => $styles,
       '#default_value' => !empty($settings['plugins']['codesnippet']['highlight_style']) ? $settings['plugins']['codesnippet']['highlight_style'] : $default_style,
-    );
+    ];
 
-    $form['highlight_languages'] = array(
+    $form['highlight_languages'] = [
       '#type' => 'checkboxes',
       '#title' => 'Supported Languages',
       '#options' => $languages,
-      '#description' => t('Enter languages you want to have as options in the editor dialog. To add a language not in this list, please see the README.txt of this module.'),
+      '#description' => $this->t('Enter languages you want to have as options in the editor dialog. To add a language not in this list, please see the README.txt of this module.'),
       '#default_value' => isset($settings['plugins']['codesnippet']['highlight_languages']) ? $settings['plugins']['codesnippet']['highlight_languages'] : array_map('strtolower', $languages),
-    );
+    ];
 
     return $form;
   }
@@ -111,7 +113,7 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
    */
   private function getStyles() {
     $styles = preg_grep('/\.css/', scandir(DRUPAL_ROOT . '/libraries/codesnippet/lib/highlight/styles'));
-    $style_options = array();
+    $style_options = [];
 
     foreach ($styles as $stylesheet) {
       $name = str_replace('.css', '', $stylesheet);
@@ -120,4 +122,5 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
 
     return $style_options;
   }
+
 }
