@@ -15,7 +15,6 @@ use Drupal\Core\Url;
  * @CKEditorPlugin(
  *   id = "codesnippet",
  *   label = @Translation("CodeSnippet"),
- *   module = "ckeditor"
  * )
  */
 class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurableInterface {
