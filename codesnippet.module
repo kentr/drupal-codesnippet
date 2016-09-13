@@ -23,7 +23,7 @@ function codesnippet_ckeditor_css_alter(array &$css, Editor $editor) {
   $settings = $editor->getSettings();
 
   if (!empty($settings['plugins']['codesnippet']['highlight_style'])) {
-    $css[] = base_path() . 'libraries/codesnippet/lib/highlight/styles/' . $settings['plugins']['codesnippet']['highlight_style'] . '.css';
+    $css[] = 'libraries/codesnippet/lib/highlight/styles/' . $settings['plugins']['codesnippet']['highlight_style'] . '.css';
   }
 }
 
