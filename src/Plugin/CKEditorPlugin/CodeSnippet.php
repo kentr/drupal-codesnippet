@@ -107,8 +107,13 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
     return $style_options;
   }
 
+  /**
+   * Return the default style.
+   * @return string
+   */
   private function getDefaultStyle() {
-    return 'arta';
+    $styles = $this->getStyles();
+    return reset($styles);
   }
 
   /**
@@ -122,8 +127,8 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
    * @return array
    */
   private function getDefaultLanguages() {
-    $languages = $this->getLanguages();
-    return array_combine(array_keys($languages), array_keys($languages));
+    $languages = array_keys($this->getLanguages());
+    return array_combine($languages, $languages);
   }
 
   /**
