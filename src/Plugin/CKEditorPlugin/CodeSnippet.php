@@ -108,7 +108,9 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
   }
 
   /**
-   * Return the default style.
+   * Return the default style if one is not set in active config - which will be
+   * the first one in the list of styles returned from getStyles().
+   *
    * @return string
    */
   private function getDefaultStyle() {
