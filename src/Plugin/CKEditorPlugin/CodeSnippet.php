@@ -142,6 +142,12 @@ class CodeSnippet extends CKEditorPluginBase implements CKEditorPluginConfigurab
    * Unlike getDefaultLanguages(), this provides human friendly names for
    * languages (ex. C++ instead of cpp).
    *
+   * These languages are provided as options by the module because these are the
+   * languages that come with HighlightJS in the CodeSnippet CKEditor plugin.
+   *
+   * To add more languages, users can easily implement hook_form_alter() and add
+   * to the options array.
+   *
    * @return array
    */
   private function getLanguages() {
