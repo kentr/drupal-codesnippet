@@ -19,6 +19,7 @@ languages:
   makefile: 'Makefile'
   markdown: 'Markdown'
   nginx: 'Nginx'
+  no-highlight: 'No highlight'
   php: 'PHP'
   perl: 'Perl'
   powershell: 'Powershell'
